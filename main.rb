@@ -13,8 +13,10 @@ puts "Please enter the No of Legs"
 noOfLeg = gets.chomp.strip
 puts "PLease enter the Home Planet"
 homePlanet = gets.chomp.strip
-puts "Please enter the format you want the data in (text/pdf)"
-fileFormat = gets.chomp.strip
+begin
+  puts "Please enter the format you want the data in (text/pdf)"
+  fileFormat = gets.chomp.strip
+end while !["text","pdf"].include? fileFormat
 
 alien = Alien.new(codeName, bloodColor, noOfAnt, noOfLeg, homePlanet)
 exporter = Exporter.new(fileFormat)

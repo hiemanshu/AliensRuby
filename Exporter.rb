@@ -8,15 +8,18 @@ class Exporter
   end
 
   def exportDetails(alien)
+    details = "#{alien.codeName} #{alien.bloodColor} #{alien.noOfAntennae} #{alien.noOfLegs} #{alien.homePlanet}"
     if @format.eql? "text"
       File.open('alien.txt', 'w') do |file|
-        file.write("#{alien.codeName} #{alien.bloodColor} #{alien.noOfAntennae} #{alien.noOfLegs} #{alien.homePlanet}")
+        file.write(details)
+        puts "Data has been saved to alien.txt"
       end
     end
 
     if @format.eql? "pdf"
       Prawn::Document.generate("alien.pdf") do
-        text "#{alien.codeName} #{alien.bloodColor} #{alien.noOfAntennae} #{alien.noOfLegs} #{alien.homePlanet}"
+        text details 
+        puts "Data has been saved to alien.pdf"
       end
     end
   end
